@@ -14,14 +14,18 @@ fn main() {
   // let reader = BufReader::new(f);
 
   let stdin = io::stdin();
+  let mut buffer;
   loop {
+    buffer = String::new();
     print_commands();
-    let mut buffer = String::new();
     stdin.lock().read_line(&mut buffer);
     match buffer.trim_end() {
       "1" => println!("View all notes!"),
       "2" => println!("Add new note!"),
-      "q" => break,
+      "q" => {
+        println!("Quitting application!");
+        break;
+      },
       _ => println!("Unrecognized command, please try again.")
     }
   }
